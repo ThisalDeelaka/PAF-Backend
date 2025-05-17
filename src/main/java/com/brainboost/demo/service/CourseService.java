@@ -85,4 +85,19 @@ public class CourseService {
                 return courseRepository.save(course);
             }).orElse(null);
     }
+
+    public Course deleteNote(String courseId, int index) {
+        return courseRepository.findById(courseId)
+                .map(course -> {
+                    List<Note> notes = course.getNotes();
+                    if (index >= 0 && index < notes.size()) {
+                        notes.remove(index);
+                        course.setNotes(notes);
+                        return courseRepository.save(course);
+                    }
+                    return null;
+                })
+                .orElse(null);
+    }
+
 }

@@ -61,4 +61,9 @@ public class CourseController {
     public Course toggleNoteCompletion(@PathVariable String id, @PathVariable int index) {
         return courseService.toggleNoteCompletion(id, index);
     }
+    @DeleteMapping("/{id}/notes/{index}")
+    public Course deleteNote(@PathVariable String id, @PathVariable int index) {
+        return courseService.deleteNote(id, index);
+    }
+
 }
